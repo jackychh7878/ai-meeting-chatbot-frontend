@@ -1,0 +1,289 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styling for the full-height chat layout with logo */
+.chat-app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Header styling */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #112e49;
+  padding: 10px 20px;
+  height: 60px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.ccg-logo {
+  height: 45px;
+  width: auto;
+  margin-right: 15px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.app-title {
+  color: white;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.chat-container-wrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.full-height-chat {
+  height: 100%;
+  width: 100%;
+}
+
+/* Override n8n chat styles to ensure full height and proper input positioning */
+#n8n-chat-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px); /* Subtract header height */
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+#n8n-chat-container .n8n-chat {
+  height: 100% !important;
+  max-height: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  position: relative !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Hide the n8n chat header since we have our own */
+#n8n-chat-container .n8n-chat-header {
+  display: none !important;
+}
+
+/* Ensure chat messages align to the left */
+#n8n-chat-container .n8n-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  text-align: left !important;
+  padding: 20px !important;
+  margin-bottom: 0 !important;
+}
+
+#n8n-chat-container .n8n-chat-message {
+  text-align: left !important;
+  margin-left: 0 !important;
+  padding-left: 15px !important;
+}
+
+#n8n-chat-container .n8n-chat-footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  padding: 10px 20px !important;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+#n8n-chat-container .n8n-chat-input {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#n8n-chat-container .n8n-chat-input textarea {
+  padding: 10px !important;
+  margin: 0 !important;
+  border-radius: 4px !important;
+  border: 1px solid #e0e0e0 !important;
+  resize: none !important;
+  max-height: 150px !important;
+  min-height: 50px !important;
+}
+
+/* Ensure the input text is visible */
+#n8n-chat-container .n8n-chat-input textarea {
+  color: #333333 !important;
+  background-color: #ffffff !important;
+}
+
+/* Ensure message bubbles align to the left */
+#n8n-chat-container .n8n-chat-bubble {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+}
+
+/* Only user messages should be aligned to the right */
+#n8n-chat-container .n8n-chat-message.n8n-chat-message-user .n8n-chat-bubble {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+/* n8n Chat Widget Customization */
+:root {
+	--chat--color-primary: #112e49;
+	--chat--color-primary-shade-50: #0e2720;
+	--chat--color-primary-shade-100: #0a1c17;
+	--chat--color-secondary: #112e49;
+	--chat--color-secondary-shade-50: #0e2720;
+	--chat--color-white: #ffffff;
+	--chat--color-light: #f2f4f8;
+	--chat--color-light-shade-50: #e6e9f1;
+	--chat--color-light-shade-100: #c2c5cc;
+	--chat--color-medium: #d2d4d9;
+	--chat--color-dark: #112e49;
+	--chat--color-disabled: #777980;
+	--chat--color-typing: #404040;
+
+	--chat--spacing: 1rem;
+	--chat--border-radius: 0.25rem;
+	--chat--transition-duration: 0.15s;
+
+	--chat--window--width: 400px;
+	--chat--window--height: 600px;
+
+	--chat--header-height: auto;
+	--chat--header--padding: var(--chat--spacing);
+	--chat--header--background: #112e49;
+	--chat--header--color: var(--chat--color-white);
+	--chat--header--border-top: none;
+	--chat--header--border-bottom: none;
+	--chat--heading--font-size: 1.5em;
+	--chat--subtitle--font-size: inherit;
+	--chat--subtitle--line-height: 1.8;
+
+	--chat--textarea--height: 50px;
+
+	--chat--message--font-size: 1rem;
+	--chat--message--padding: var(--chat--spacing);
+	--chat--message--border-radius: var(--chat--border-radius);
+	--chat--message-line-height: 1.8;
+	--chat--message--bot--background: var(--chat--color-white);
+	--chat--message--bot--color: var(--chat--color-dark);
+	--chat--message--bot--border: none;
+	--chat--message--user--background: #112e49;
+	--chat--message--user--color: var(--chat--color-white);
+	--chat--message--user--border: none;
+	--chat--message--pre--background: rgba(0, 0, 0, 0.05);
+
+	--chat--toggle--background: #112e49;
+	--chat--toggle--hover--background: #0e2720;
+	--chat--toggle--active--background: #0a1c17;
+	--chat--toggle--color: var(--chat--color-white);
+	--chat--toggle--size: 64px;
+	
+	/* Adding input text color to fix visibility issue */
+	--chat--input--color: #333333;
+}
+
+/* Additional customization to match Chinachem Group website */
+/*#n8n-chat .n8n-chat-header {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*}*/
+
+#n8n-chat .n8n-chat-toggle {
+  box-shadow: 0 2px 10px rgba(18, 50, 41, 0.3);
+}
+
+/* Fix for input text visibility */
+#n8n-chat .n8n-chat-input textarea,
+#n8n-chat .n8n-chat-input input {
+  color: var(--chat--input--color) !important;
+  caret-color: #333333 !important;
+}
+
+/* Additional direct fixes for input text color */
+#n8n-chat textarea,
+#n8n-chat input[type="text"] {
+  color: #333333 !important;
+  background-color: #ffffff !important;
+}
+
+/* Try to override any potential conflicting styles */
+#n8n-chat .n8n-chat-footer textarea,
+#n8n-chat .n8n-chat-footer input {
+  color: #333333 !important;
+}
+
+/* Target the specific textarea directly */
+.n8n-chat-input-field {
+  color: #333333 !important;
+}
+
+/* Additional style to ensure text input is visible */
+#n8n-chat * {
+  --n8n-chat-input-text-color: #333333;
+}
+
+.chat-inputs textarea {
+  color: #333333 !important;
+  background-color: #ffffff !important; /* Ensure background is white */
+}
+
+.chat-header {
+  display: none !important;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Override n8n chat watermark */
+#n8n-chat-container .chat-powered-by {
+  display: none !important;
+}
+
+/*#n8n-chat-container::after {*/
+/*    content: "Powered by T-flow Agentic Framework";*/
+/*    position: fixed;*/
+/*    bottom: 10px;*/
+/*    left: 50%;*/
+/*    transform: translateX(-50%);*/
+/*    font-size: 12px;*/
+/*    color: #666;*/
+/*    z-index: 1000;*/
+/*}*/
+
+/*!* Hide watermark in new conversation state *!*/
+/*#n8n-chat-container.n8n-chat-new-conversation::after {*/
+/*  display: none;*/
+/*}*/
