@@ -4,6 +4,7 @@ import '@n8n/chat/style.css'
 import { createChat } from '@n8n/chat'
 import './App.css'
 import CCGLogo from './assets/catomind_logo.png'
+import { getEnvVar } from './utils/env'
 
 interface ChatAppProps {
   title: string;
@@ -38,8 +39,8 @@ function ChatApp({ title, webhookUrl, path }: ChatAppProps) {
 }
 
 function DynamicChatRoute() {
-  const webhookId = import.meta.env.VITE_N8N_WEBHOOK_ID;
-  const baseUrl = import.meta.env.VITE_N8N_BASE_URL || 'http://localhost:5678';
+  const webhookId = getEnvVar('VITE_N8N_WEBHOOK_ID');
+  const baseUrl = getEnvVar('VITE_N8N_BASE_URL') || 'http://localhost:5678';
   const webhookUrl = webhookId ? `${baseUrl}/webhook/${webhookId}/chat` : '';
 
   const [webhookExists, setWebhookExists] = useState<null | boolean>(null);
